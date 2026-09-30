@@ -6,117 +6,90 @@
 <title>Ahir SMM Panel</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
-body {
-  background: #f4f6fb;
-  color: #172033;
+body{
+  background:#f4f6fb;
+  color:#111827;
 }
 
-header {
-  background: #111827;
-  color: white;
-  padding: 25px 20px;
-  text-align: center;
+header{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:35px 15px;
 }
 
-header h1 {
-  font-size: 30px;
+header h1{
+  font-size:40px;
 }
 
-header p {
-  margin-top: 8px;
-  color: #cbd5e1;
+header p{
+  margin-top:10px;
+  font-size:20px;
+  color:#cbd5e1;
 }
 
-.hero {
-  background: white;
-  text-align: center;
-  padding: 45px 20px;
+.container{
+  max-width:600px;
+  margin:35px auto;
+  padding:20px;
 }
 
-.hero h2 {
-  font-size: 38px;
-  margin-bottom: 15px;
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  margin-bottom:25px;
 }
 
-.hero p {
-  color: #64748b;
-  font-size: 18px;
-  margin-bottom: 25px;
+h2{
+  margin-bottom:20px;
 }
 
-.btn {
-  display: inline-block;
-  background: #2563eb;
-  color: white;
-  padding: 15px 28px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
+input{
+  width:100%;
+  padding:15px;
+  margin:8px 0;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  font-size:16px;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  padding: 30px 20px;
-  max-width: 800px;
-  margin: auto;
+button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:15px 25px;
+  border-radius:10px;
+  font-size:17px;
+  cursor:pointer;
+  margin-top:10px;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+button:hover{
+  background:#1d4ed8;
 }
 
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 22px;
+.switch{
+  margin-top:20px;
+  color:#2563eb;
+  cursor:pointer;
 }
 
-.card p {
-  color: #64748b;
-  line-height: 1.5;
+.hidden{
+  display:none;
 }
 
-.login {
-  background: white;
-  max-width: 420px;
-  margin: 30px auto;
-  padding: 30px 20px;
-  border-radius: 18px;
-}
-
-.login h2 {
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-}
-
-@media(max-width:600px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h2 {
-    font-size: 30px;
-  }
+.message{
+  margin-top:15px;
+  font-weight:bold;
 }
 </style>
 </head>
@@ -128,44 +101,139 @@ input {
   <p>Social Media Services Panel</p>
 </header>
 
-<section class="hero">
-  <h2>Grow Your Social Media</h2>
-  <p>Simple, fast and easy service management.</p>
-  <a href="#login" class="btn">Login / Register</a>
-</section>
+<div class="container">
 
-<section class="cards">
-
-  <div class="card">
-    <h3>📊 Dashboard</h3>
-    <p>View your account and order information.</p>
+  <!-- HOME -->
+  <div id="home" class="card">
+    <h2>Grow Your Social Media</h2>
+    <p>Simple, fast and easy social media service management.</p>
+    <button onclick="showRegister()">Create Account</button>
+    <button onclick="showLogin()">Login</button>
   </div>
 
-  <div class="card">
-    <h3>🛒 New Order</h3>
-    <p>Create and manage your service orders.</p>
+  <!-- REGISTER -->
+  <div id="register" class="card hidden">
+    <h2>Create Account</h2>
+
+    <input type="text" id="regUsername" placeholder="Username">
+
+    <input type="password" id="regPassword" placeholder="Password">
+
+    <input type="password" id="regConfirm" placeholder="Confirm Password">
+
+    <button onclick="register()">Register</button>
+
+    <p class="switch" onclick="showLogin()">
+      Already have an account? Login
+    </p>
+
+    <p id="regMessage" class="message"></p>
   </div>
 
-  <div class="card">
-    <h3>📦 Orders</h3>
-    <p>Check your previous orders and their status.</p>
+  <!-- LOGIN -->
+  <div id="login" class="card hidden">
+    <h2>Login</h2>
+
+    <input type="text" id="loginUsername" placeholder="Username">
+
+    <input type="password" id="loginPassword" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p class="switch" onclick="showRegister()">
+      Don't have an account? Register
+    </p>
+
+    <p id="loginMessage" class="message"></p>
   </div>
 
-  <div class="card">
-    <h3>💰 Wallet</h3>
-    <p>View your account balance.</p>
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="card hidden">
+    <h2>Welcome, <span id="userName"></span> 👋</h2>
+
+    <p style="margin:15px 0;">
+      Welcome to Ahir SMM Panel.
+    </p>
+
+    <button onclick="logout()">Logout</button>
   </div>
 
-</section>
+</div>
 
-<section class="login" id="login">
-  <h2>Login</h2>
+<script>
 
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
+function hideAll(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("register").classList.add("hidden");
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("dashboard").classList.add("hidden");
+}
 
-  <button class="btn">Login</button>
-</section>
+function showRegister(){
+  hideAll();
+  document.getElementById("register").classList.remove("hidden");
+}
+
+function showLogin(){
+  hideAll();
+  document.getElementById("login").classList.remove("hidden");
+}
+
+function register(){
+
+  let username = document.getElementById("regUsername").value.trim();
+  let password = document.getElementById("regPassword").value;
+  let confirm = document.getElementById("regConfirm").value;
+  let message = document.getElementById("regMessage");
+
+  if(username === "" || password === ""){
+    message.innerText = "Please fill all fields.";
+    return;
+  }
+
+  if(password !== confirm){
+    message.innerText = "Passwords do not match.";
+    return;
+  }
+
+  localStorage.setItem("ahir_username", username);
+  localStorage.setItem("ahir_password", password);
+
+  message.innerText = "Account created successfully!";
+
+  setTimeout(function(){
+    showLogin();
+  },1000);
+}
+
+function login(){
+
+  let username = document.getElementById("loginUsername").value.trim();
+  let password = document.getElementById("loginPassword").value;
+
+  let savedUsername = localStorage.getItem("ahir_username");
+  let savedPassword = localStorage.getItem("ahir_password");
+
+  let message = document.getElementById("loginMessage");
+
+  if(username === savedUsername && password === savedPassword){
+
+    document.getElementById("userName").innerText = username;
+
+    hideAll();
+    document.getElementById("dashboard").classList.remove("hidden");
+
+  }else{
+    message.innerText = "Wrong username or password.";
+  }
+}
+
+function logout(){
+  hideAll();
+  document.getElementById("home").classList.remove("hidden");
+}
+
+</script>
 
 </body>
 </html>
