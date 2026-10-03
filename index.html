@@ -1,546 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ahir SMM Panel</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-    min-height:100vh;
-    background:linear-gradient(180deg,#fff8f3,#ffab0b);
-    color:#171717;
-}
-
-/* HEADER */
-header{
-    height:100px;
-    background:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    box-shadow:0 2px 12px rgba(0,0,0,.12);
-}
-
-.logo{
-    font-size:30px;
-    font-weight:800;
-    color:#169bc2;
-}
-
-.menu{
-    width:82px;
-    height:64px;
-    border:2px solid #e56d2d;
-    border-radius:8px;
-    background:white;
-    color:#e56d2d;
-    font-size:40px;
-    line-height:50px;
-}
-
-/* MAIN */
-.container{
-    max-width:630px;
-    margin:80px auto;
-    padding:20px;
-}
-
-.login-card{
-    background:white;
-    border:2px solid #e5e5e5;
-    border-radius:8px;
-    padding:38px;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
-}
-
-.login-card h2{
-    font-size:30px;
-    margin-bottom:35px;
-}
-
-/* INPUT */
-label{
-    display:block;
-    font-size:18px;
-    font-weight:bold;
-    margin:22px 0 9px;
-}
-
-input{
-    width:100%;
-    height:62px;
-    padding:0 20px;
-    border:0;
-    border-radius:15px;
-    background:#fff3ed;
-    font-size:20px;
-    outline:none;
-}
-
-input:focus{
-    box-shadow:0 0 0 2px #f47721;
-}
-
-/* REMEMBER */
-.remember{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin:25px 0;
-    font-size:18px;
-}
-
-.remember input{
-    width:30px;
-    height:30px;
-}
-
-/* BUTTON */
-button{
-    width:100%;
-    height:62px;
-    border:0;
-    border-radius:12px;
-    background:#f86b0b;
-    color:white;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 3px 0 #c95400;
-}
-
-button:active{
-    transform:translateY(2px);
-    box-shadow:none;
-}
-
-.forgot{
-    display:block;
-    text-align:center;
-    color:#d96b3b;
-    font-size:20px;
-    margin:25px 0 60px;
-    cursor:pointer;
-}
-
-.no-account{
-    text-align:center;
-    font-size:20px;
-    color:#555;
-}
-
-.create{
-    display:block;
-    text-align:center;
-    margin-top:25px;
-    color:#e76328;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.google{
-    margin-top:30px;
-    background:#f86b0b;
-}
-
-/* REGISTER */
-.hidden{
-    display:none;
-}
-
-.message{
-    margin-top:15px;
-    padding:12px;
-    background:#fff1e8;
-    border-radius:8px;
-    text-align:center;
-    color:#d35400;
-}
-
-/* DASHBOARD */
-.dashboard-card{
-    background:white;
-    border-radius:15px;
-    padding:30px;
-    text-align:center;
-}
-
-.dashboard-card h2{
-    font-size:30px;
-    margin-bottom:15px;
-}
-
-.dashboard-card p{
-    color:#666;
-    font-size:18px;
-    margin-bottom:25px;
-}
-
-.dashboard-btn{
-    margin-top:15px;
-}
-
-/* FLOATING BUTTONS */
-.float{
-    position:fixed;
-    right:18px;
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:30px;
-    text-decoration:none;
-    box-shadow:0 4px 12px rgba(0,0,0,.25);
-}
-
-.telegram{
-    bottom:95px;
-    background:#229ed9;
-}
-
-.whatsapp{
-    bottom:20px;
-    background:#25d366;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-
-    header{
-        height:90px;
-        padding:0 20px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahir SMM Panel</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandOrange: '#f97316',
+            brandDark: '#111827',
+          }
+        }
+      }
     }
-
-    .logo{
-        font-size:24px;
-    }
-
-    .menu{
-        width:70px;
-        height:55px;
-        font-size:32px;
-    }
-
-    .container{
-        margin:55px auto;
-        padding:15px;
-    }
-
-    .login-card{
-        padding:30px 25px;
-    }
-
-    .login-card h2{
-        font-size:28px;
-    }
-}
-</style>
+  </script>
 </head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-<body>
+  <!-- Floating Social Buttons -->
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col space-y-3">
+    <a href="https://t.me/your_telegram_username" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+      <i class="fa-brands fa-telegram text-2xl"></i>
+    </a>
+    <a href="https://wa.me/your_whatsapp_number" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+  </div>
 
-<header>
-    <div class="logo">AHIR SMM PANEL</div>
-    <button class="menu" onclick="alert('Menu coming soon')">☰</button>
-</header>
+  <!-- Main Container -->
+  <div class="flex-grow flex items-center justify-center p-4">
+    
+    <!-- 1. AUTH SECTION (Login / Register) -->
+    <div id="auth-section" class="w-full max-w-md bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-700">
+      
+      <!-- Brand Header -->
+      <div class="text-center mb-6">
+        <h1 class="text-2xl md:text-3xl font-extrabold tracking-wider text-brandOrange">AHIR SMM PANEL</h1>
+        <p class="text-xs text-gray-400 mt-1">Best & Affordable SMM Services</p>
+      </div>
 
+      <!-- Alert / Status Box -->
+      <div id="auth-alert" class="hidden mb-4 p-3 text-sm rounded-lg text-center"></div>
 
-<div class="container">
+      <!-- LOGIN FORM -->
+      <div id="login-form-container">
+        <h2 class="text-lg font-semibold mb-4 text-gray-200">Sign In to Your Account</h2>
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-gray-400 mb-1">Email / Username</label>
+            <input type="email" id="login-email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="name@example.com">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
+            <input type="password" id="login-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+          </div>
+          <div class="flex items-center justify-between text-xs text-gray-400">
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="checkbox" id="remember-me" class="rounded bg-gray-900 border-gray-700 text-brandOrange focus:ring-0">
+              <span>Remember Me</span>
+            </label>
+            <a href="#" onclick="alert('Password reset link sent to your registered email if available.')" class="hover:text-brandOrange transition">Forgot Password?</a>
+          </div>
+          <button type="submit" class="w-full py-3 bg-brandOrange hover:bg-orange-600 text-white font-bold rounded-lg transition shadow-lg text-sm">
+            Log In
+          </button>
+        </form>
 
-<!-- LOGIN -->
-<div id="loginPage" class="login-card">
+        <!-- Divider -->
+        <div class="relative my-6 text-center">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-700"></div></div>
+          <span class="relative px-2 bg-gray-800 text-xs text-gray-400 uppercase">Or continue with</span>
+        </div>
 
-    <h2>Username</h2>
+        <!-- Google Login Button -->
+        <button id="google-login-btn" type="button" class="w-full py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg transition flex items-center justify-center space-x-2 text-sm shadow-md">
+          <svg class="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.16 21.32 7.22 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.18C.43 8.12 0 9.81 0 12s.43 3.88 1.18 5.39l4.09-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.22 0 3.16 2.68 1.18 6.61l4.09 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/>
+          </svg>
+          <span>Sign in with Google</span>
+        </button>
 
-    <input
-        id="loginUsername"
-        type="text"
-        placeholder="Username"
-    >
+        <!-- Switch to Register -->
+        <p class="text-center text-xs text-gray-400 mt-6">
+          Don't have an account? <button onclick="toggleAuthView('register')" class="text-brandOrange font-semibold hover:underline">Create Account</button>
+        </p>
+      </div>
 
-    <label>Password</label>
+      <!-- REGISTER FORM -->
+      <div id="register-form-container" class="hidden">
+        <h2 class="text-lg font-semibold mb-4 text-gray-200">Create New Account</h2>
+        <form id="register-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-gray-400 mb-1">Username / Email</label>
+            <input type="email" id="reg-email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="name@example.com">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
+            <input type="password" id="reg-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-400 mb-1">Confirm Password</label>
+            <input type="password" id="reg-confirm-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+          </div>
+          <button type="submit" class="w-full py-3 bg-brandOrange hover:bg-orange-600 text-white font-bold rounded-lg transition shadow-lg text-sm">
+            Create Account
+          </button>
+        </form>
 
-    <input
-        id="loginPassword"
-        type="password"
-        placeholder="Password"
-    >
+        <!-- Switch to Login -->
+        <p class="text-center text-xs text-gray-400 mt-6">
+          Already have an account? <button onclick="toggleAuthView('login')" class="text-brandOrange font-semibold hover:underline">Log In</button>
+        </p>
+      </div>
 
-    <div class="remember">
-        <input id="remember" type="checkbox">
-        <span>Remember me</span>
     </div>
 
-    <button onclick="login()">Log In</button>
+    <!-- 2. DASHBOARD SECTION (Hidden by default) -->
+    <div id="dashboard-section" class="hidden w-full max-w-4xl bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
+      
+      <!-- Top Navbar -->
+      <div class="bg-gray-900 px-6 py-4 flex items-center justify-between border-b border-gray-700">
+        <div class="flex items-center space-x-3">
+          <span class="text-lg font-black text-brandOrange">AHIR SMM</span>
+          <span class="hidden sm:inline-block text-xs bg-gray-800 text-gray-300 px-2.5 py-1 rounded-full border border-gray-700">Dashboard</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="text-right">
+            <p id="user-display-name" class="text-xs font-bold text-gray-200">User</p>
+            <p class="text-[10px] text-brandOrange font-medium">Balance: $<span id="wallet-balance">10.00</span></p>
+          </div>
+          <button id="logout-btn" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition border border-red-500/30">
+            <i class="fa-solid fa-power-off"></i> Logout
+          </button>
+        </div>
+      </div>
 
-    <div class="forgot" onclick="forgotPassword()">
-        Forgot Password?
+      <!-- Navigation Tabs -->
+      <div class="flex border-b border-gray-700 bg-gray-800/50 overflow-x-auto">
+        <button onclick="switchTab('new-order')" id="tab-btn-new-order" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-bold text-brandOrange border-b-2 border-brandOrange transition">New Order</button>
+        <button onclick="switchTab('orders')" id="tab-btn-orders" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition">My Orders</button>
+        <button onclick="switchTab('wallet')" id="tab-btn-wallet" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition">Wallet</button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div class="p-6 md:p-8">
+        
+        <!-- Tab 1: New Order -->
+        <div id="tab-new-order" class="space-y-6">
+          <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700/50">
+            <h3 class="text-sm font-semibold text-gray-200 mb-4 flex items-center space-x-2">
+              <i class="fa-solid fa-cart-plus text-brandOrange"></i>
+              <span>Create New Order</span>
+            </h3>
+            <form id="order-form" class="space-y-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1">Service Category / Service</label>
+                <select id="order-service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
+                  <option value="Instagram Followers [High Quality] - $2.50 per 1000">Instagram Followers [High Quality] - $2.50 / 1k</option>
+                  <option value="Instagram Likes [Instant] - $1.00 per 1000">Instagram Likes [Instant] - $1.00 / 1k</option>
+                  <option value="YouTube Views [Fast] - $4.00 per 1000">YouTube Views [Fast] - $4.00 / 1k</option>
+                  <option value="Telegram Members [Real] - $3.50 per 1000">Telegram Members [Real] - $3.50 / 1k</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1">Target Link</label>
+                <input type="url" id="order-link" required placeholder="https://instagram.com/yourprofile" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-400 mb-1">Quantity</label>
+                <input type="number" id="order-quantity" min="100" value="1000" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
+              </div>
+              <button type="submit" class="w-full py-3 bg-brandOrange hover:bg-orange-600 text-white font-bold rounded-lg transition shadow-lg text-sm">
+                Place Order
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 2: My Orders -->
+        <div id="tab-orders" class="hidden space-y-4">
+          <h3 class="text-sm font-semibold text-gray-200 flex items-center space-x-2">
+            <i class="fa-solid fa-list-check text-brandOrange"></i>
+            <span>Order History</span>
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300">
+              <thead class="bg-gray-900 text-gray-400 uppercase text-[10px]">
+                <tr>
+                  <th class="p-3 rounded-l-lg">Order ID</th>
+                  <th class="p-3">Service</th>
+                  <th class="p-3">Link</th>
+                  <th class="p-3">Qty</th>
+                  <th class="p-3 rounded-r-lg">Status</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body" class="divide-y divide-gray-700/50">
+                <!-- Dynamic Orders -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 3: Wallet -->
+        <div id="tab-wallet" class="hidden space-y-6">
+          <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700/50 text-center">
+            <p class="text-xs text-gray-400">Current Balance</p>
+            <h2 class="text-3xl font-black text-brandOrange mt-1">$<span id="wallet-balance-large">10.00</span></h2>
+            <p class="text-xs text-gray-500 mt-4">Add funds feature placeholder. Online payment gateways will be integrated soon.</p>
+            <button onclick="alert('Payment gateway integration placeholder. Funds can be added manually by admin.')" class="mt-4 px-6 py-2.5 bg-brandOrange hover:bg-orange-600 text-white font-semibold rounded-lg text-xs transition shadow-md">
+              Add Funds
+            </button>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="no-account">
-        Do not have an account?
-    </div>
+  </div>
 
-    <div class="create" onclick="showRegister()">
-        Create Account
-    </div>
+  <!-- Footer -->
+  <footer class="py-4 text-center text-xs text-gray-500 border-t border-gray-800">
+    &copy; 2026 Ahir SMM Panel. All rights reserved.
+  </footer>
 
-    <button class="google" onclick="googleMessage()">
-        G+ Signin with Google+
-    </button>
+  <!-- Firebase Integration Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithPopup, 
+      GoogleAuthProvider, 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword, 
+      signOut, 
+      onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-    <div id="loginMessage"></div>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbgP_wctHptiMHzVGs8gyaKpsfArrJyeI",
+      authDomain: "ahir-smm-panel.firebaseapp.com",
+      projectId: "ahir-smm-panel",
+      storageBucket: "ahir-smm-panel.firebasestorage.app",
+      messagingSenderId: "1002811447845",
+      appId: "1:1002811447845:web:5791b0a4ba3fa2c8aefdcc",
+      measurementId: "G-MMWE31X9JT"
+    };
 
-</div>
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
 
+    // UI Elements
+    const authSection = document.getElementById('auth-section');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const loginFormContainer = document.getElementById('login-form-container');
+    const registerFormContainer = document.getElementById('register-form-container');
+    const authAlert = document.getElementById('auth-alert');
+    const userDisplayName = document.getElementById('user-display-name');
+    const walletBalance = document.getElementById('wallet-balance');
+    const walletBalanceLarge = document.getElementById('wallet-balance-large');
+    
+    // Helper function for alerts
+    function showAlert(message, isError = true) {
+      authAlert.textContent = message;
+      authAlert.className = `mb-4 p-3 text-sm rounded-lg text-center ${isError ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-green-500/25 text-green-300 border border-green-500/30'}`;
+      authAlert.classList.remove('hidden');
+    }
 
-<!-- REGISTER -->
-<div id="registerPage" class="login-card hidden">
+    // Toggle Login/Register Views
+    window.toggleAuthView = function(view) {
+      authAlert.classList.add('hidden');
+      if (view === 'register') {
+        loginFormContainer.classList.add('hidden');
+        registerFormContainer.classList.remove('hidden');
+      } else {
+        registerFormContainer.classList.add('hidden');
+        loginFormContainer.classList.remove('hidden');
+      }
+    }
 
-    <h2>Create Account</h2>
+    // Tab Switcher
+    window.switchTab = function(tabName) {
+      ['new-order', 'orders', 'wallet'].forEach(t => {
+        document.getElementById(`tab-${t}`).classList.add('hidden');
+        document.getElementById(`tab-btn-${t}`).className = "flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition";
+      });
+      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+      document.getElementById(`tab-btn-${tabName}`).className = "flex-1 min-w-[100px] py-3 px-4 text-xs font-bold text-brandOrange border-b-2 border-brandOrange transition";
+      
+      if (tabName === 'orders') renderOrders();
+    }
 
-    <label>Username</label>
+    // Auth State Observer
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        authSection.classList.add('hidden');
+        dashboardSection.classList.remove('hidden');
+        const displayName = user.displayName || user.email.split('@')[0];
+        userDisplayName.textContent = displayName;
+      } else {
+        dashboardSection.classList.add('hidden');
+        authSection.classList.remove('hidden');
+      }
+    });
 
-    <input
-        id="regUsername"
-        type="text"
-        placeholder="Username"
-    >
+    // Email Login
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-password').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+      } catch (error) {
+        showAlert(error.message);
+      }
+    });
 
-    <label>Password</label>
-
-    <input
-        id="regPassword"
-        type="password"
-        placeholder="Password"
-    >
-
-    <label>Confirm Password</label>
-
-    <input
-        id="regConfirm"
-        type="password"
-        placeholder="Confirm Password"
-    >
-
-    <button onclick="register()">
-        Create Account
-    </button>
-
-    <div class="create" onclick="showLogin()">
-        Already have an account? Login
-    </div>
-
-    <div id="registerMessage"></div>
-
-</div>
-
-
-<!-- DASHBOARD -->
-<div id="dashboardPage" class="dashboard-card hidden">
-
-    <h2>
-        Welcome, <span id="usernameDisplay"></span> 👋
-    </h2>
-
-    <p>
-        Welcome to Ahir SMM Panel.
-    </p>
-
-    <button onclick="alert('New Order feature coming soon')">
-        🛒 New Order
-    </button>
-
-    <button class="dashboard-btn"
-            onclick="alert('Orders feature coming soon')">
-        📦 My Orders
-    </button>
-
-    <button class="dashboard-btn"
-            onclick="alert('Wallet feature coming soon')">
-        💰 Wallet
-    </button>
-
-    <button class="dashboard-btn"
-            onclick="logout()">
-        Logout
-    </button>
-
-</div>
-
-</div>
-
-
-<!-- FLOATING BUTTONS -->
-<a class="float telegram"
-   href="#"
-   onclick="alert('Add your Telegram link here')">
-   ✈
-</a>
-
-<a class="float whatsapp"
-   href="#"
-   onclick="alert('Add your WhatsApp link here')">
-   ☎
-</a>
-
-
-<script>
-
-function showRegister(){
-
-    document.getElementById("loginPage")
-        .classList.add("hidden");
-
-    document.getElementById("registerPage")
-        .classList.remove("hidden");
-}
-
-
-function showLogin(){
-
-    document.getElementById("registerPage")
-        .classList.add("hidden");
-
-    document.getElementById("dashboardPage")
-        .classList.add("hidden");
-
-    document.getElementById("loginPage")
-        .classList.remove("hidden");
-}
-
-
-function register(){
-
-    let username =
-        document.getElementById("regUsername")
-        .value.trim();
-
-    let password =
-        document.getElementById("regPassword")
-        .value;
-
-    let confirm =
-        document.getElementById("regConfirm")
-        .value;
-
-    let message =
-        document.getElementById("registerMessage");
-
-
-    if(username === "" ||
-       password === "" ||
-       confirm === ""){
-
-        message.innerHTML =
-        '<div class="message">Please fill all fields.</div>';
-
+    // Email Register
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('reg-email').value;
+      const pass = document.getElementById('reg-password').value;
+      const confirmPass = document.getElementById('reg-confirm-password').value;
+      
+      if (pass !== confirmPass) {
+        showAlert("Passwords do not match!");
         return;
-    }
+      }
 
+      try {
+        await createUserWithEmailAndPassword(auth, email, pass);
+        showAlert("Account created successfully!", false);
+      } catch (error) {
+        showAlert(error.message);
+      }
+    });
 
-    if(password !== confirm){
+    // Google Sign-In Popup
+    document.getElementById('google-login-btn').addEventListener('click', async () => {
+      try {
+        await signInWithPopup(auth, googleProvider);
+      } catch (error) {
+        showAlert("Google Login Failed: " + error.message);
+      }
+    });
 
-        message.innerHTML =
-        '<div class="message">Passwords do not match.</div>';
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+      } catch (error) {
+        console.error(error);
+      }
+    });
 
+    // Demo Order System (LocalStorage)
+    document.getElementById('order-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const service = document.getElementById('order-service').value;
+      const link = document.getElementById('order-link').value;
+      const quantity = document.getElementById('order-quantity').value;
+
+      const newOrder = {
+        id: Math.floor(10000 + Math.random() * 90000),
+        service: service.split(' - ')[0],
+        link: link,
+        quantity: quantity,
+        status: 'Pending'
+      };
+
+      let orders = JSON.parse(localStorage.getItem('ahir_smm_orders') || '[]');
+      orders.unshift(newOrder);
+      localStorage.setItem('ahir_smm_orders', JSON.stringify(orders));
+
+      alert('Order placed successfully!');
+      document.getElementById('order-link').value = '';
+      switchTab('orders');
+    });
+
+    function renderOrders() {
+      const tbody = document.getElementById('orders-table-body');
+      const orders = JSON.parse(localStorage.getItem('ahir_smm_orders') || '[]');
+      
+      if (orders.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">No orders found.</td></tr>`;
         return;
-    }
+      }
 
-
-    localStorage.setItem(
-        "ahir_username",
-        username
-    );
-
-    localStorage.setItem(
-        "ahir_password",
-        password
-    );
-
-
-    message.innerHTML =
-    '<div class="message">Account created successfully!</div>';
-
-
-    setTimeout(function(){
-
-        showLogin();
-
-    },1000);
-}
-
-
-function login(){
-
-    let username =
-        document.getElementById("loginUsername")
-        .value.trim();
-
-    let password =
-        document.getElementById("loginPassword")
-        .value;
-
-    let savedUsername =
-        localStorage.getItem("ahir_username");
-
-    let savedPassword =
-        localStorage.getItem("ahir_password");
-
-
-    if(username === savedUsername &&
-       password === savedPassword){
-
-        document.getElementById("loginPage")
-            .classList.add("hidden");
-
-        document.getElementById("dashboardPage")
-            .classList.remove("hidden");
-
-        document.getElementById("usernameDisplay")
-            .innerText = username;
-
-    }else{
-
-        document.getElementById("loginMessage")
-            .innerHTML =
-        '<div class="message">Wrong username or password.</div>';
-    }
-}
-
-
-function logout(){
-
-    document.getElementById("dashboardPage")
-        .classList.add("hidden");
-
-    document.getElementById("loginPage")
-        .classList.remove("hidden");
-}
-
-
-function forgotPassword(){
-
-    alert("Password recovery will be added later.");
-}
-
-
-
-</script>
-
-</body>
-</html>
+      tbody.innerHTML = orders.map(o => `
+        <tr class="hover:bg-gray-900/30">
+          <td class="p-3 font-mono text-brandOrange">#${o.id}</td>
+          <td class="p-3 truncate max-w-[150px]">${o.service}</td>
+          <td class="p-3 truncate max-w-[120px]"><a href="${o.link}" target="_blank" class="t
