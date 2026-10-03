@@ -348,7 +348,7 @@
       }
     });
 
-    // Google Sign-In Popup
+    // Google Sign-In with redirect
     document.getElementById('google-login-btn').addEventListener('click', async () => {
       try {
         await signInWithPopup(auth, googleProvider);
