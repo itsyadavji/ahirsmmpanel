@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahir SMM Panel</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
     tailwind.config = {
@@ -15,20 +13,21 @@
           colors: {
             brandOrange: '#f97316',
             brandDark: '#111827',
+            brandLight: '#FFF7ED',
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-brandLight text-brandDark font-sans antialiased min-h-screen flex flex-col justify-between">
 
   <!-- Floating Social Buttons -->
   <div class="fixed bottom-5 right-5 z-50 flex flex-col space-y-3">
     <a href="https://t.me/your_telegram_username" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
       <i class="fa-brands fa-telegram text-2xl"></i>
     </a>
-    <a href="https://wa.me/9286574507" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
+    <a href="https://wa.me/your_whatsapp_number" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110">
       <i class="fa-brands fa-whatsapp text-2xl"></i>
     </a>
   </div>
@@ -36,33 +35,30 @@
   <!-- Main Container -->
   <div class="flex-grow flex items-center justify-center p-4">
     
-    <!-- 1. AUTH SECTION (Login / Register) -->
-    <div id="auth-section" class="w-full max-w-md bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-700">
-      
-      <!-- Brand Header -->
+    <!-- 1. AUTH SECTION -->
+    <div id="auth-section" class="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-orange-100">
       <div class="text-center mb-6">
         <h1 class="text-2xl md:text-3xl font-extrabold tracking-wider text-brandOrange">AHIR SMM PANEL</h1>
-        <p class="text-xs text-gray-400 mt-1">Best & Affordable SMM Services</p>
+        <p class="text-xs text-gray-500 mt-1">Best & Affordable SMM Services</p>
       </div>
 
-      <!-- Alert / Status Box -->
       <div id="auth-alert" class="hidden mb-4 p-3 text-sm rounded-lg text-center"></div>
 
       <!-- LOGIN FORM -->
       <div id="login-form-container">
-        <h2 class="text-lg font-semibold mb-4 text-gray-200">Sign In to Your Account</h2>
+        <h2 class="text-lg font-semibold mb-4 text-brandDark">Sign In to Your Account</h2>
         <form id="login-form" class="space-y-4">
           <div>
-            <label class="block text-xs font-medium text-gray-400 mb-1">Email / Username</label>
-            <input type="email" id="login-email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="name@example.com">
+            <label class="block text-xs font-medium text-gray-500 mb-1">Email / Username</label>
+            <input type="email" id="login-email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark" placeholder="name@example.com">
           </div>
           <div>
-            <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
-            <input type="password" id="login-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+            <label class="block text-xs font-medium text-gray-500 mb-1">Password</label>
+            <input type="password" id="login-password" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark" placeholder="••••••••">
           </div>
-          <div class="flex items-center justify-between text-xs text-gray-400">
+          <div class="flex items-center justify-between text-xs text-gray-500">
             <label class="flex items-center space-x-2 cursor-pointer">
-              <input type="checkbox" id="remember-me" class="rounded bg-gray-900 border-gray-700 text-brandOrange focus:ring-0">
+              <input type="checkbox" id="remember-me" class="rounded border-gray-300 text-brandOrange focus:ring-brandOrange">
               <span>Remember Me</span>
             </label>
             <a href="#" onclick="alert('Password reset link sent to your registered email if available.')" class="hover:text-brandOrange transition">Forgot Password?</a>
@@ -72,14 +68,12 @@
           </button>
         </form>
 
-        <!-- Divider -->
         <div class="relative my-6 text-center">
-          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-700"></div></div>
-          <span class="relative px-2 bg-gray-800 text-xs text-gray-400 uppercase">Or continue with</span>
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+          <span class="relative px-2 bg-white text-xs text-gray-400 uppercase">Or continue with</span>
         </div>
 
-        <!-- Google Login Button -->
-        <button id="google-login-btn" type="button" class="w-full py-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold rounded-lg transition flex items-center justify-center space-x-2 text-sm shadow-md">
+        <button id="google-login-btn" type="button" class="w-full py-3 bg-white hover:bg-gray-50 text-brandDark border border-gray-200 font-semibold rounded-lg transition flex items-center justify-center space-x-2 text-sm shadow-sm">
           <svg class="w-5 h-5" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
             <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.16 21.32 7.22 24 12 24z"/>
@@ -89,66 +83,62 @@
           <span>Sign in with Google</span>
         </button>
 
-        <!-- Switch to Register -->
-        <p class="text-center text-xs text-gray-400 mt-6">
+        <p class="text-center text-xs text-gray-500 mt-6">
           Don't have an account? <button onclick="toggleAuthView('register')" class="text-brandOrange font-semibold hover:underline">Create Account</button>
         </p>
       </div>
 
       <!-- REGISTER FORM -->
       <div id="register-form-container" class="hidden">
-        <h2 class="text-lg font-semibold mb-4 text-gray-200">Create New Account</h2>
+        <h2 class="text-lg font-semibold mb-4 text-brandDark">Create New Account</h2>
         <form id="register-form" class="space-y-4">
           <div>
-            <label class="block text-xs font-medium text-gray-400 mb-1">Username / Email</label>
-            <input type="email" id="reg-email" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="name@example.com">
+            <label class="block text-xs font-medium text-gray-500 mb-1">Username / Email</label>
+            <input type="email" id="reg-email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark" placeholder="name@example.com">
           </div>
           <div>
-            <label class="block text-xs font-medium text-gray-400 mb-1">Password</label>
-            <input type="password" id="reg-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+            <label class="block text-xs font-medium text-gray-500 mb-1">Password</label>
+            <input type="password" id="reg-password" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark" placeholder="••••••••">
           </div>
           <div>
-            <label class="block text-xs font-medium text-gray-400 mb-1">Confirm Password</label>
-            <input type="password" id="reg-confirm-password" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white" placeholder="••••••••">
+            <label class="block text-xs font-medium text-gray-500 mb-1">Confirm Password</label>
+            <input type="password" id="reg-confirm-password" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark" placeholder="••••••••">
           </div>
           <button type="submit" class="w-full py-3 bg-brandOrange hover:bg-orange-600 text-white font-bold rounded-lg transition shadow-lg text-sm">
             Create Account
           </button>
         </form>
-
-        <!-- Switch to Login -->
-        <p class="text-center text-xs text-gray-400 mt-6">
+        <p class="text-center text-xs text-gray-500 mt-6">
           Already have an account? <button onclick="toggleAuthView('login')" class="text-brandOrange font-semibold hover:underline">Log In</button>
         </p>
       </div>
-
     </div>
 
-    <!-- 2. DASHBOARD SECTION (Hidden by default) -->
-    <div id="dashboard-section" class="hidden w-full max-w-4xl bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
+    <!-- 2. DASHBOARD SECTION -->
+    <div id="dashboard-section" class="hidden w-full max-w-4xl bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
       
       <!-- Top Navbar -->
-      <div class="bg-gray-900 px-6 py-4 flex items-center justify-between border-b border-gray-700">
+      <div class="bg-white px-6 py-4 flex items-center justify-between border-b border-gray-100">
         <div class="flex items-center space-x-3">
           <span class="text-lg font-black text-brandOrange">AHIR SMM</span>
-          <span class="hidden sm:inline-block text-xs bg-gray-800 text-gray-300 px-2.5 py-1 rounded-full border border-gray-700">Dashboard</span>
+          <span class="hidden sm:inline-block text-xs bg-brandLight text-brandOrange px-2.5 py-1 rounded-full border border-orange-100">Dashboard</span>
         </div>
         <div class="flex items-center space-x-4">
           <div class="text-right">
-            <p id="user-display-name" class="text-xs font-bold text-gray-200">User</p>
+            <p id="user-display-name" class="text-xs font-bold text-brandDark">User</p>
             <p class="text-[10px] text-brandOrange font-medium">Balance: $<span id="wallet-balance">10.00</span></p>
           </div>
-          <button id="logout-btn" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-3 py-1.5 rounded-lg text-xs font-semibold transition border border-red-500/30">
+          <button id="logout-btn" class="bg-red-50 hover:bg-red-100 text-red-600 px-3 py-1.5 rounded-lg text-xs font-semibold transition border border-red-100">
             <i class="fa-solid fa-power-off"></i> Logout
           </button>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
-      <div class="flex border-b border-gray-700 bg-gray-800/50 overflow-x-auto">
+      <div class="flex border-b border-gray-100 bg-gray-50 overflow-x-auto">
         <button onclick="switchTab('new-order')" id="tab-btn-new-order" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-bold text-brandOrange border-b-2 border-brandOrange transition">New Order</button>
-        <button onclick="switchTab('orders')" id="tab-btn-orders" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition">My Orders</button>
-        <button onclick="switchTab('wallet')" id="tab-btn-wallet" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition">Wallet</button>
+        <button onclick="switchTab('orders')" id="tab-btn-orders" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-500 hover:text-brandDark transition">Order History</button>
+        <button onclick="switchTab('wallet')" id="tab-btn-wallet" class="flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-500 hover:text-brandDark transition">Add Funds</button>
       </div>
 
       <!-- Tab Contents -->
@@ -156,28 +146,34 @@
         
         <!-- Tab 1: New Order -->
         <div id="tab-new-order" class="space-y-6">
-          <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-700/50">
-            <h3 class="text-sm font-semibold text-gray-200 mb-4 flex items-center space-x-2">
+          <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+            <h3 class="text-sm font-semibold text-brandDark mb-4 flex items-center space-x-2">
               <i class="fa-solid fa-cart-plus text-brandOrange"></i>
               <span>Create New Order</span>
             </h3>
             <form id="order-form" class="space-y-4">
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Service Category / Service</label>
-                <select id="order-service" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
-                  <option value="Instagram Followers [High Quality] - $2.50 per 1000">Instagram Followers [High Quality] - $2.50 / 1k</option>
-                  <option value="Instagram Likes [Instant] - $1.00 per 1000">Instagram Likes [Instant] - $1.00 / 1k</option>
-                  <option value="YouTube Views [Fast] - $4.00 per 1000">YouTube Views [Fast] - $4.00 / 1k</option>
-                  <option value="Telegram Members [Real] - $3.50 per 1000">Telegram Members [Real] - $3.50 / 1k</option>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Service Category</label>
+                <select id="order-category" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark">
+                  <option value="Instagram">Instagram Services</option>
+                  <option value="YouTube">YouTube Services</option>
+                  <option value="Telegram">Telegram Services</option>
                 </select>
               </div>
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Target Link</label>
-                <input type="url" id="order-link" required placeholder="https://instagram.com/yourprofile" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
+                <label class="block text-xs font-medium text-gray-500 mb-1">Service</label>
+                <select id="order-service" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark">
+                  <option value="Instagram Followers [High Quality] - $2.50 per 1000">Instagram Followers [High Quality] - $2.50 / 1k</option>
+                  <option value="Instagram Views [Instant] - $1.00 per 1000">Instagram Views [Instant] - $1.00 / 1k</option>
+                </select>
               </div>
               <div>
-                <label class="block text-xs font-medium text-gray-400 mb-1">Quantity</label>
-                <input type="number" id="order-quantity" min="100" value="1000" required class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-white">
+                <label class="block text-xs font-medium text-gray-500 mb-1">Target Link</label>
+                <input type="url" id="order-link" required placeholder="https://instagram.com/yourprofile" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark">
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Quantity</label>
+                <input type="number" id="order-quantity" min="100" value="1000" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brandOrange text-brandDark">
               </div>
               <button type="submit" class="w-full py-3 bg-brandOrange hover:bg-orange-600 text-white font-bold rounded-lg transition shadow-lg text-sm">
                 Place Order
@@ -186,15 +182,15 @@
           </div>
         </div>
 
-        <!-- Tab 2: My Orders -->
+        <!-- Tab 2: Order History -->
         <div id="tab-orders" class="hidden space-y-4">
-          <h3 class="text-sm font-semibold text-gray-200 flex items-center space-x-2">
+          <h3 class="text-sm font-semibold text-brandDark flex items-center space-x-2">
             <i class="fa-solid fa-list-check text-brandOrange"></i>
             <span>Order History</span>
           </h3>
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-gray-300">
-              <thead class="bg-gray-900 text-gray-400 uppercase text-[10px]">
+            <table class="w-full text-left text-xs text-brandDark">
+              <thead class="bg-gray-50 text-gray-500 uppercase text-[10px]">
                 <tr>
                   <th class="p-3 rounded-l-lg">Order ID</th>
                   <th class="p-3">Service</th>
@@ -203,8 +199,7 @@
                   <th class="p-3 rounded-r-lg">Status</th>
                 </tr>
               </thead>
-              <tbody id="orders-table-body" class="divide-y divide-gray-700/50">
-                <!-- Dynamic Orders -->
+              <tbody id="orders-table-body" class="divide-y divide-gray-100">
               </tbody>
             </table>
           </div>
@@ -212,33 +207,29 @@
 
         <!-- Tab 3: Wallet -->
         <div id="tab-wallet" class="hidden space-y-6">
-          <div class="bg-gray-900/50 p-6 rounded-xl border border-gray-700/50 text-center">
-            <p class="text-xs text-gray-400">Current Balance</p>
+          <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
+            <p class="text-xs text-gray-500">Current Balance</p>
             <h2 class="text-3xl font-black text-brandOrange mt-1">$<span id="wallet-balance-large">10.00</span></h2>
-            <p class="text-xs text-gray-500 mt-4">Add funds feature placeholder. Online payment gateways will be integrated soon.</p>
-            <button onclick="alert('Payment gateway integration placeholder. Funds can be added manually by admin.')" class="mt-4 px-6 py-2.5 bg-brandOrange hover:bg-orange-600 text-white font-semibold rounded-lg text-xs transition shadow-md">
+            <p class="text-xs text-gray-400 mt-4">Add funds feature placeholder. Online payment gateways will be integrated soon.</p>
+            <button onclick="alert('Payment gateway integration placeholder. Funds can be added manually by admin.')" class="mt-4 px-6 py-2.5 bg-brandOrange hover:bg-orange-600 text-white font-semibold rounded-lg text-xs transition shadow-lg">
               Add Funds
             </button>
           </div>
         </div>
 
       </div>
-
     </div>
-
   </div>
 
-  <!-- Footer -->
-  <footer class="py-4 text-center text-xs text-gray-500 border-t border-gray-800">
+  <footer class="py-4 text-center text-xs text-gray-400 border-t border-gray-100">
     &copy; 2026 Ahir SMM Panel. All rights reserved.
   </footer>
 
-  <!-- Firebase Integration Script -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
     import { 
       getAuth, 
-      signInWithPopup, 
+      signInWithRedirect, 
       GoogleAuthProvider, 
       signInWithEmailAndPassword, 
       createUserWithEmailAndPassword, 
@@ -246,7 +237,6 @@
       onAuthStateChanged 
     } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-    // Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAbgP_wctHptiMHzVGs8gyaKpsfArrJyeI",
       authDomain: "ahir-smm-panel.firebaseapp.com",
@@ -257,12 +247,10 @@
       measurementId: "G-MMWE31X9JT"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider();
 
-    // UI Elements
     const authSection = document.getElementById('auth-section');
     const dashboardSection = document.getElementById('dashboard-section');
     const loginFormContainer = document.getElementById('login-form-container');
@@ -272,14 +260,12 @@
     const walletBalance = document.getElementById('wallet-balance');
     const walletBalanceLarge = document.getElementById('wallet-balance-large');
     
-    // Helper function for alerts
     function showAlert(message, isError = true) {
       authAlert.textContent = message;
-      authAlert.className = `mb-4 p-3 text-sm rounded-lg text-center ${isError ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-green-500/25 text-green-300 border border-green-500/30'}`;
+      authAlert.className = `mb-4 p-3 text-sm rounded-lg text-center ${isError ? 'bg-red-50 text-red-600 border border-red-100' : 'bg-green-50 text-green-600 border border-green-100'}`;
       authAlert.classList.remove('hidden');
     }
 
-    // Toggle Login/Register Views
     window.toggleAuthView = function(view) {
       authAlert.classList.add('hidden');
       if (view === 'register') {
@@ -291,11 +277,10 @@
       }
     }
 
-    // Tab Switcher
     window.switchTab = function(tabName) {
       ['new-order', 'orders', 'wallet'].forEach(t => {
         document.getElementById(`tab-${t}`).classList.add('hidden');
-        document.getElementById(`tab-btn-${t}`).className = "flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-400 hover:text-gray-200 transition";
+        document.getElementById(`tab-btn-${t}`).className = "flex-1 min-w-[100px] py-3 px-4 text-xs font-semibold text-gray-500 hover:text-brandDark transition";
       });
       document.getElementById(`tab-${tabName}`).classList.remove('hidden');
       document.getElementById(`tab-btn-${tabName}`).className = "flex-1 min-w-[100px] py-3 px-4 text-xs font-bold text-brandOrange border-b-2 border-brandOrange transition";
@@ -303,7 +288,6 @@
       if (tabName === 'orders') renderOrders();
     }
 
-    // Auth State Observer
     onAuthStateChanged(auth, (user) => {
       if (user) {
         authSection.classList.add('hidden');
@@ -316,7 +300,6 @@
       }
     });
 
-    // Email Login
     document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.getElementById('login-email').value;
@@ -328,18 +311,15 @@
       }
     });
 
-    // Email Register
     document.getElementById('register-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.getElementById('reg-email').value;
       const pass = document.getElementById('reg-password').value;
       const confirmPass = document.getElementById('reg-confirm-password').value;
-      
       if (pass !== confirmPass) {
         showAlert("Passwords do not match!");
         return;
       }
-
       try {
         await createUserWithEmailAndPassword(auth, email, pass);
         showAlert("Account created successfully!", false);
@@ -348,16 +328,14 @@
       }
     });
 
-    // Google Sign-In with redirect
     document.getElementById('google-login-btn').addEventListener('click', async () => {
       try {
-        await signInWithredirect(auth, googleProvider);
+        await signInWithRedirect(auth, googleProvider);
       } catch (error) {
         showAlert("Google Login Failed: " + error.message);
       }
     });
 
-    // Logout
     document.getElementById('logout-btn').addEventListener('click', async () => {
       try {
         await signOut(auth);
@@ -366,7 +344,6 @@
       }
     });
 
-    // Demo Order System (LocalStorage)
     document.getElementById('order-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const service = document.getElementById('order-service').value;
@@ -393,14 +370,21 @@
     function renderOrders() {
       const tbody = document.getElementById('orders-table-body');
       const orders = JSON.parse(localStorage.getItem('ahir_smm_orders') || '[]');
-      
       if (orders.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">No orders found.</td></tr>`;
         return;
       }
-
       tbody.innerHTML = orders.map(o => `
-        <tr class="hover:bg-gray-900/30">
+        <tr class="hover:bg-gray-50/50">
           <td class="p-3 font-mono text-brandOrange">#${o.id}</td>
           <td class="p-3 truncate max-w-[150px]">${o.service}</td>
-          <td class="p-3 truncate max-w-[120px]"><a href="${o.link}" target="_blank" class="t
+          <td class="p-3 truncate max-w-[120px]"><a href="${o.link}" target="_blank" class="text-blue-500 underline">Link</a></td>
+          <td class="p-3">${o.quantity}</td>
+          <td class="p-3"><span class="px-2 py-0.5 text-[10px] bg-yellow-50 text-yellow-600 rounded-full border border-yellow-100">${o.status}</span></td>
+        </tr>
+      `).join('');
+    }
+  </script>
+</body>
+  </html>
+                                   
